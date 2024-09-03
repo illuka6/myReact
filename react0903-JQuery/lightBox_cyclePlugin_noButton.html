@@ -22,7 +22,7 @@
     }
 
     .box {
-        border: 5px solid red;
+        border: 5px solid wheat;
         width: 600px;
         height: 450px;
         position: relative; /* 對位基準點 */
@@ -34,6 +34,25 @@
         right: 0;
         z-index: 99;
     }
+    #nav a {
+        color: transparent; /* 要將字設置消失,也可以將fontSize設為0 */
+        text-decoration: none;
+        font-size: 20px;
+        margin: 0 20px 20px 0 ;
+        border: 1px solid #fff;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        text-align: center;
+        /* justify-content: center; */
+        line-height: 20px; /* 行高與高度一樣時 垂直置中 */
+        border-radius: 50%;
+    }
+    /* 作用中的數字底色會改變 */
+    #nav a.activeSlide{
+        background-color: white;
+    }
+
 </style>
 
 <main>
