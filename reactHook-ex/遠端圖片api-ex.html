@@ -72,16 +72,11 @@
                         const [jsonData, setJsonDatas] = useState([]);
                         // 加入讀取
                         // 改用傳參考的方式(變數的相同位址)
-                        const [isLeading, setIsLoading] = useState(false);
-
-
-
+                        const [isLoading, setIsLoading] = useState(false);
 
                         //使用useRef建立變數
                         const currentPage = useRef(1);
-                        const isLoading = useRef(false);
-
-
+                        
 
                         const onSearchHandler = (e) => {
                             // 查看事件觸發時的相關資料 console.log(e);
