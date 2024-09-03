@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Line Today</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.2.0/redux.min.js"
+        integrity="sha512-1/8Tj23BRrWnKZXeBruk6wTnsMJbi/lJsk9bsRgVwb6j5q39n0A00gFjbCTaDo5l5XrPVv4DZXftrJExhRF/Ug=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            background-color: lightgrey;
+            
+            margin:  0;
+        }
+
+        .box {
+            width: 80vw;
+            max-width: 680px;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            padding: 200px 40px;
+        }
+        img {
+            width: 100%;
+            
+        }
+        .logo_ltn {
+            width: 40px;
+
+        }
+        p {
+            padding: 10px 0;
+        }
+        small {
+            color: grey;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+
+<body className="bg-lighter">
+
+    <main className="col post">
+
+        <!-- 練習開始 -->
+
+        <!-- 步驟一：加入 root DOM -->
+        <div id="root"></div>
+
+        <script type="text/babel">
+            // 程式撰寫區
+            function App() {
+                const data = {
+                    imgurl: 'https://media.istockphoto.com/id/1401100981/photo/young-woman-freelancer-traveler-working-online-using-laptop-and-enjoying-the-beautiful-nature.jpg?b=1&s=170667a&w=0&k=20&c=APFnR6nLEdH4MxojjFdNi6-g0jXE6zlvb0EXJmkkgwU=',
+                    title: '卡片標題',
+                    desc: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi culpaaspernatur tempore cupiditate illo minima voluptatem blanditiis optioaccusantium earum voluptate magni repellendus, ipsa dolor adipisci liberoqui commodi veritatis.',
+                    btnLink: 'https://unsplash.com/s/photos/free',
+                    btnName: 'Go somewhere',
+                }
+                return (<>
+                    <div className="box">
+                        <h2>第9號颱風「雲雀」生成！ 鄭明典：在台灣旁邊長出來</h2>
+                        <div>
+                            <a href="https://today.line.me/tw/v2/publisher/100309"><img className="logo_ltn" 
+                                src="https://www.ltn.com.tw/assets/images/250_ltn.png?upload=20191119" alt="" />
+                                自由電子報</a>
+                            <small>更新於 6小時前 • 發布於 6小時前</small>
+                        </div>
+                        <img src="https://today-obs.line-scdn.net/0hgGC7k4RPOGh-TijN01JHP0YYNBlNKCJhXCp0CV5KNFsGYituSnprC1JGZ0RbKyxrXi8iWglOZlsDLShtQw/w1200"
+                            alt="" />
+                        <small>輕颱「雲雀」今凌晨生成，目前預測前進路線將向朝鮮半島移動。(圖擷取自中央氣象署)</small>
+                        <h2>將向朝鮮半島移動 對台灣無影響</h2>
+                        <p>黃其豪／核稿編輯</p>
+                        <p>〔即時新聞／綜合報導〕原先位於琉球南方海面的熱帶性低氣壓已在今日(19日)凌晨2點發展為今年第9號颱風、輕颱「雲雀」，目前預測前進路線將向朝鮮半島前進，對台灣天氣沒有影響。
+
+                            「雲雀」颱風中心位置於今凌晨2點位於台北市東方約430公里的海面上，中心氣壓為1000百帕，以每小時17轉30公里速度，向北北西轉北進行，中心附近最大風速每秒18公尺，相當於8級風，，7級風暴風半徑100公里。
+
+                            氣象署預測，「雲雀」颱風向東海移動，預計將往朝鮮半島一帶移動，「雲雀」颱風強度發展有限，對台灣天氣沒有影響。
+
+                            前氣象局長鄭明典在臉書發文表示，「雲雀」颱風有如在台灣旁邊長出來的，在台灣東方海面上生成，而目前低層旋轉雲系部分露出，強對流偏在西南側，表示垂直風切稍強，不利颱風發展。
+                        </p>
+
+
+                        <a href="https://today.line.me/tw/v2/article/8nN6P8q?imageSlideIndex=1"><img
+                            src="https://today-obs.line-scdn.net/0hRsYPd3OTDVxkKR35yTVyC1x_AS1XTxdVRhwWPxQqU2tJBUMKURteP0ksWnBAS0MCRBhBb0EhVjxOSU8IDw/w1200"
+                            alt="" /></a>
+                        <small>鄭明典在臉書發文表示，「雲雀」颱風有如在台灣旁邊長出來的。(圖擷取自中央氣象署)</small>
+                    </div>
+                </>)
+
+            } ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+
+
+        </script>
+
+
+        <!-- 練習結束 -->
+    </main>
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+</body>
+
+</html>
