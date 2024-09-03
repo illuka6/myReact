@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <!-- ReactHool 狀態useState -->
+   
+
+    <!-- 原生js寫法 -->
+     <button id="btn1">+</button>
+     <script>
+        let num=0;
+        let btn1 = document.getElementById('btn1');
+        let showNum=document.getElementById('showNum');
+        btn1.addEventListener('click',() =>{
+            num++;
+            console.log(num);
+            showNum.textContent=num;
+        })
+     </script>
+     <hr>
+     <!-- 取得useState方法 -->
+     <!-- React寫法 -->
+      <div id="root"></div>
+      <script type="text/babel">
+        console.log(React);
+        console.log(ReactDOM);
+        const {useState} = React;
+        // 這行代碼的意思是從 React 對象中提取 useState 函式。這樣，你就可以直接使用 useState 這個函式，而不用每次都寫 React.useState。
+
+        function App() {
+            // let num2 = 0;
+            // jsx寫法
+            // 前者是變數,後者是寫入變數的方法
+
+            const [num2,setNum2]=useState(0);
+
+            return (
+                <div>
+                    <button onClick={()=>{
+                        // num2++;//num2 = num2 +1
+                        setNum2(num2+1);
+                        console.log(num2);
+                    }}>+</button>
+                    {num2}
+                    </div>
+                    
+            )
+        }
+       
+
+        ReactDOM
+            .createRoot(document.getElementById('root'))
+            .render(<App />);
+      </script>
+</body>
+</html>

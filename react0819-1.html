@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 步驟1:載入React, Bable --> <!-- react CND文件 babel=>原始js寫法 -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  
+
+    <!-- 步驟1 載入react -->
+</head>
+
+<body>
+    <!-- 步驟2:載入root元素 -->
+    <div id="root"></div>
+
+    <!--  type="text/babel"=>要寫,否則瀏覽器無法辨識REACT內的JS語法 -->
+    <script type="text/babel">
+        // 查看react,ReactDDOM成員
+        console.log(React, ReactDOM);
+
+
+
+        //  步驟3:建立React元件
+        // App自首要大寫,而且一定要有回傳值
+
+        function App() {
+            return (
+                /* 小括號=>縮排好看用,因為return後面一定要有標籤,不能換行否則會出錯 => */
+                /* 若不用小括號包起,也可在return後放<> , 再換行寫程式碼 <>為無標籤元素 */
+                /* react只認一層父元素,因此第一層不能並列兩個以上的元素=>就在外面再統一包起來,才不會出錯 */
+                <h1>早安, React</h1>
+            )
+        }
+
+        // 步驟4: 渲染(顯示)App元件到根元件(root)上
+        /*  const el = document.getElementById('root');
+            const root = ReactDOM.createRoot(el);
+            root.render(<App />); */
+        // 簡化:
+        ReactDOM
+            .createRoot(document.getElementById('root'))
+            .render(<App />);
+    </script>
+
+
+</body>
+
+</html>

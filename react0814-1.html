@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 步驟1:載入React, Bable --> <!-- react CND文件 babel=>原始js寫法 -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        img{
+            width: 200px;
+        }
+    </style>
+
+    <!-- 步驟1 載入react -->
+</head>
+
+<body>
+    <!-- 步驟2:載入root元素 -->
+    <div id="root"></div>
+    <!-- 步驟3:建立React元件 -->
+    <!--  type="text/babel"=>要寫,否則瀏覽器無法辨識REACT內的JS語法 -->
+    <script type="text/babel">
+        function App() {
+            return ( 
+                /* 小括號=>縮排好看用,因為return後面一定要有標籤,不能換行否則會出錯 => */
+                /* 若不用小括號包起,也可在return後放<> , 再換行寫程式碼 <>為無標籤元素 */
+                /* react只認一層父元素,因此第一層不能並列兩個以上的元素=>就在外面再統一包起來,才不會出錯 */
+                <div>
+                    <div>
+                        <h2>我是圖片</h2>
+                        <img src="./images/trst1.jpeg" alt="" />
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima mollitia saepe recusandae inventore voluptate. Atque molestiae suscipit reiciendis exercitationem! Voluptatibus, officiis voluptates magni sed distinctio alias, expedita et ullam nemo nesciunt iste quis quo sit possimus quasi, aut odit eum ipsa aliquid impedit ex doloribus exercitationem perferendis. Reiciendis eum sit possimus optio cum excepturi, hic inventore iusto praesentium sunt commodi deserunt unde accusantium quod consectetur. Vel nihil voluptates voluptate quibusdam amet illo veniam illum, iusto magnam eaque expedita, modi commodi similique labore tenetur nemo, reiciendis perferendis atque suscipit. Rerum quo dolorum ipsam pariatur nobis nihil vitae ipsa sequi, aliquid fugit architecto, omnis incidunt libero consequatur id aut. Illum deleniti quas ipsa quisquam, iste nulla sapiente obcaecati officia sed, natus, animi perferendis repellat? Sed aliquid a quidem incidunt voluptate neque quas. Qui distinctio accusantium non adipisci totam similique laudantium nobis repellendus! Ab voluptatibus libero doloremque tenetur, esse vero distinctio consectetur ipsum fugiat repudiandae, amet, voluptas perferendis illum veniam laudantium. Ipsum quae aspernatur assumenda fuga deserunt, sint itaque possimus quas aliquam animi cum. Vitae veniam maiores explicabo ipsum quasi ratione voluptates animi inventore reprehenderit recusandae dignissimos voluptatum odit alias sapiente, veritatis possimus, beatae fuga? Praesentium, est tenetur similique corrupti laborum minus sequi.</p>
+                </div>
+            )
+        }
+
+        // 步驟4: 渲染(顯示)App元件到根元件(root)上
+        const el = document.getElementById('root');
+        const root = ReactDOM.createRoot(el);
+        root.render(<App />);
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <!-- onChange  -->
+    <!-- 原生js寫法 -->
+    <h2>原生JS</h2>
+    <input type="text" id="input" value="abc">
+    <div style="display: flex ">
+        <div id="keyup_content">keyup:</div> <br />
+
+        <div id="change_content">change:</div>
+    </div>
+    <script>
+        const input = document.getElementById('input');
+
+        // change事件:游標離開之後觸發
+        const change_content = document.getElementById('change_content');
+
+        input.addEventListener('change', (e) => {
+            console.log('change事件被觸發了');
+            keyup_content.innerHTML += `{${e.target.value}}<br>`;
+            console.log('change事件' + e.target.value);
+
+        })
+        // keyup事件:鍵盤彈上來時觸發
+        const keyup_content = document.getElementById('keyup_content');
+
+        input.addEventListener('keyup', (e) => {
+            keyup_content.innerHTML += `{${e.code}}<br>`;
+            keyup_content.innerHTML += `{${e.target.value}}<br>`;
+            keyup_content.innerHTML += `{${input.value}}<br>`;
+            console.log('keyup事件被觸發了');
+            console.log('keyup事件' + e.target.value);
+
+        })
+
+    </script>
+
+    <!-- React -->
+    <!-- input綁定useState -->
+
+    <hr>
+
+    <!-- React寫法 -->
+    <h2>React</h2>
+
+    <div id="root"></div>
+    <script type="text/babel">
+        console.log(React);
+        // 從React中解構賦值, 取得useState方法
+        const { useState } = React;
+        function App() {
+            const [text, setText] = useState('');
+            return (
+                <>
+                    <div>
+                        {/* React環境下不可以直接使用value  要用defaultValue*/}
+                        {/* 用value的話要搭配onChange事件 並用useState() */}
+                        {/* <input type="text" id="inputReact" value='abc'/> */}
+                        <input type="text" id="inputReact" value={text} 
+                        onChange={(e) => {
+                            console.log(e.target.value);
+                            setText(e.target.value);
+                            }}
+                            /* 失去焦點(游標) */
+                             onBlur={(e) => {
+                                console.log('onBlur');
+                                // console.log(e.target.value);
+                                console.log(text);
+                            }}
+                            // 取得焦點(游標)
+                            onFocus={(e) => {
+                                console.log('onFocus');
+                            }}
+                         />  
+
+                        {/* 顯示文字方塊內容 */}
+                        {text}
+
+                        
+
+                    </div>
+                </>
+
+            )
+        }
+
+
+        ReactDOM
+            .createRoot(document.getElementById('root'))
+            .render(<App />);
+    </script>
+</body>
+
+</html>
