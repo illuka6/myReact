@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>旋轉木馬</title>
+
+ <style>
+        #carousel {
+            background-color: #cccc;
+            padding: 5px;
+        }
+
+        #carousel img {
+            vertical-align: bottom;
+            width: 150px;
+            height: 100px;
+            margin: 5px;
+        }
+    </style>
+    <!-- React Bable -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+   
+</head>
+
+
+
+<main>
+    <div id="root"></div>
+    <script type="text/babel">
+        // 撰寫JQuery
+        // $(document).ready(function(){
+        // });
+
+        // 簡寫
+
+        const { useEffect } = React;
+
+        function App() {
+
+            useEffect(() => {
+                $(function () {
+                    $('#carousel').jCarouselLite({
+                        auto: 1200, //多久時間輪播一次
+                        scroll: 1, //每次捲動的張數
+                        visible: 3, //顯示的張數
+                        speed: 1000, //輪播速度
+                    });
+                });
+            }, []);
+            return (<>
+
+                <h1>旋轉木馬</h1>
+                <div id="carousel" >
+                    <ul>
+                        <li><img src="./jQuery/imgs/item1.jpg" alt="" /></li>
+                        <li><img src="./jQuery/imgs/item2.jpg" alt="" /></li>
+                        <li><img src="./jQuery/imgs/item3.jpg" alt="" /></li>
+                        <li><img src="./jQuery/imgs/item4.jpg" alt="" /></li>
+                        <li><img src="./jQuery/imgs/item5.jpg" alt="" /></li>
+                    </ul>
+                </div>
+
+            </>)
+        }
+
+        ReactDOM
+            .createRoot(document.querySelector('#root'))
+            .render(<App />)
+    </script>
+</main>
+<!-- 可以使用套件給的 or官網的最新版 但只能擇一使用 -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<!-- 旋轉木馬主程式 -->
+<script src="./jQuery/js/jquery.jcarousellite.min.js"></script>
+</body>
+
+</html>

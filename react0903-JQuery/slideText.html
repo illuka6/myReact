@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文字輪播</title>
+    <link rel="stylesheet" href="./jQuery/css/textslider.css">
+
+
+    <!-- React Bable -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<main>
+    <div id="root"></div>
+    <script type="text/babel">
+        // 撰寫JQuery
+        // $(document).ready(function(){
+        // });
+
+        // 簡寫
+
+        const { useEffect } = React;
+
+        function App() {
+
+            useEffect(() => {
+                $(function () {
+                    $('.slideText').textslider({
+                        direction: 'scrollUp', // 捲動方向: scrollUp向上, scrollDown向下
+                        scrollNum: 1, // 一次捲動幾個<li>
+                        scrollSpeed: 800, // 捲動速度(ms)
+                        pause: 4  // 停頓時間(ms)
+                    });
+                });
+            }, []);
+            return (<>
+                <div>
+                    <h1>文字輪播</h1>
+                    <div class="slideText">
+                        <ul>
+                            <li>New1</li>
+                            <li>New2</li>
+                            <li>New3</li>
+                            <li>New4</li>
+                            <li>New5</li>
+                            <li>New6</li>
+                            <li>New7</li>
+                            <li>New8</li>
+                            <li>New9</li>
+                            <li>New10</li>
+                        </ul>
+                    </div>
+                </div>
+            </>)
+        }
+
+        ReactDOM
+            .createRoot(document.querySelector('#root'))
+            .render(<App />)
+    </script>
+</main>
+<!-- 可以使用套件給的 or官網的最新版 但只能擇一使用 -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<!-- 文字輪播 -->
+<script src="./jQuery/js/jquery.textslider.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>滑動效果</title>
+
+
+    <!-- React Bable -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+    }
+   nav{
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    background-color: black;
+    text-align: center;
+    position: fixed;
+   }
+   nav a {color: white;
+   text-decoration: none;
+   margin:0 30px;
+   }
+   #container {
+    width: 960px;
+    height: 600px;
+    margin: 0 auto;
+    overflow: hidden;
+   }
+   section{
+    width: 960px;
+    height: 600px;
+    
+    float: left;
+   }
+
+   #m1{
+    background-color: lightpink;
+   }
+   #m2{
+    background-color: lightyellow;
+   }
+   #m3{
+    background-color:lightgreen ;
+   }
+   /* 總寬度 > 所有section的寬度 */
+   #wrapper{
+    width: 3000px;
+   }
+</style>
+
+<main>
+    <div id="root"></div>
+    <script type="text/babel">
+        // 撰寫JQuery
+        // $(document).ready(function(){
+        // });
+
+        // 簡寫
+
+        const { useEffect } = React;
+
+        function App() {
+
+            useEffect(() => {
+                $(function () {
+                    $('nav').localScroll({
+                        target:'#container',/* 被點的內容出現的範圍 */
+                        axis:'x',
+                        duration:800
+                    });
+                    
+
+                });
+            }, []);
+            return (<>
+                <div>
+                    <h1>水平滑動效果</h1>
+                    <nav>
+                        <a href="#m1">menu1</a>
+                        <a href="#m2">menu2</a>
+                        <a href="#m3">menu3</a>
+                    </nav>
+                    <div id="container">
+                        <div id="wrapper">
+                            <section id="m1"></section>
+                            <section id="m2"></section>
+                            <section id="m3"></section>
+                        </div>
+                    </div>
+                            
+                </div>
+            </>)
+        }
+
+        ReactDOM
+            .createRoot(document.querySelector('#root'))
+            .render(<App />)
+    </script>
+</main>
+<!-- 可以使用套件給的 or官網的最新版 但只能擇一使用 -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<!-- 滑動主程式 -->
+<script src="./jQuery/js/jquery.scrollTo.min.js"></script>
+<script src="./jQuery/js/jquery.localScroll.min.js"></script>
+</body>
+
+</html>

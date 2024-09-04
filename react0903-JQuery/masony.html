@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>旋轉木馬</title>
+
+
+    <!-- React Bable -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<link rel="stylesheet" href="./jQuery/imgs/item1.jpg">
+<style>
+    #container {
+        margin: auto;
+    }
+
+    .box {
+        width: 300px;
+        margin-bottom: 5px;
+    }
+
+    .box img {
+        width: 300px;
+        vertical-align: bottom;
+        /* 處理圖堰下方預設的留白 取消 ,必須搭配最外框的CONTAONER margin:auto */
+    }
+</style>
+
+<main>
+    <div id="root"></div>
+    <script type="text/babel">
+        // 撰寫JQuery
+        // $(document).ready(function(){
+        // });
+
+        // 簡寫
+
+        const { useEffect } = React;
+
+        function App() {
+
+            useEffect(() => {
+                $(function () {
+                    $('#container').imagesLoaded(function () {
+                        $('#container').masonry({
+                            isFitWidth: true //左右留白平均
+                        });
+                    });
+
+                });
+            }, []);
+            return (<>
+                <h1>瀑布流</h1>
+                <div id="container">
+                    <div class="box">
+                        <img src="./jQuery/imgs/item1.jpg" alt="" />
+                    </div>
+                    <div class="box">
+                        <img src="./jQuery/imgs/item2.jpg" alt="" />
+                    </div>
+                    <div class="box">
+                        <img src="./jQuery/imgs/item3.jpg" alt="" />
+                    </div>
+                    <div class="box">
+                        <img src="./jQuery/imgs/item4.jpg" alt="" />
+                    </div>
+                    <div class="box">
+                        <img src="./jQuery/imgs/item5.jpg" alt="" />
+                    </div>
+
+                </div>
+            </>)
+        }
+
+        ReactDOM
+            .createRoot(document.querySelector('#root'))
+            .render(<App />)
+    </script>
+
+
+
+</main>
+<!-- 可以使用套件給的 or官網的最新版 但只能擇一使用 -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<!-- 圖片主程式 -->
+<script src="./jQuery/js/masonry.pkgd.min.js"></script>
+<!-- 瀑布流 -->
+<script src="./jQuery/js/imagesloaded.pkgd.min.js"></script>
+</body>
+
+</html>

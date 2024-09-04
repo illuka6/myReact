@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>動態新增刪除類別</title>
+    <link rel="stylesheet" href="./jQuery/css/textslider.css">
+
+
+    <!-- React Bable -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+      #wrapper{
+        margin:70px auto;
+      }
+      p{
+        text-align: justify;
+        line-height: 1.5;
+      }
+      a{
+        color: pink;
+        text-decoration: underline;
+      }
+      .ttpShow{
+        display: none;
+
+      }
+      #ttpPanel{
+        padding: 15px;
+        border: 3px solid #ccc;
+        padding:10px;
+        text-align: left;
+        background-color: #f1f1f1;
+        position: absolute;
+        z-index: 999;
+      }
+    </style>
+</head>
+
+<main>
+    <div id="root"></div>
+    <script type="text/babel">
+        // 撰寫JQuery
+        // $(document).ready(function(){
+        // });
+
+        // 簡寫
+
+        const { useEffect } = React;
+
+        function App() {
+
+            useEffect(() => {
+                $(function () {
+                    // 滑鼠事件
+                    // 移入 mouseover()
+                    // 移動 mousemove()
+                    // 移出 mouseout()
+
+                    // 座標X => pageX
+                    // 座標Y => pageY
+
+                    // 淡入 => fadeIn()
+                    // 淡出 => fadeOut()
+                    // 速度 =>可以使用秒數或者參數 (slow, normsl, fast)
+                    // 傳回被找到的資訊 => has()
+
+                    $('a:has(.ttpShow)').mouseover(function(e){
+                        $('body').append('<div id="ttpPanel">' + $(this).children('.ttpShow').html()+'</div>' )
+                        // 滑鼠碰到超連結有ttpShow時
+                        $('#ttpPanel').css({
+                            top:(e.pageY)+'px',
+                            left:(e.pageX)+'px'
+                        }).fadeIn('fast');
+                    });
+                    $('a:has(.ttpShow)').mousemove(function(e){
+                        // 滑鼠碰到超連結有ttpShow時
+                        $('#ttpPanel').css({
+                            top:(e.pageY)+'px',
+                            left:(e.pageX)+'px'
+                        });
+
+                    });
+                    $('a:has(..ttpPanel)').mouseout(function(e){
+                        // 滑鼠碰到超連結有ttpShow時
+                        $('#ttpPanel').fadeOut('fast');
+
+                    });
+
+
+                    
+
+                    
+                
+                });
+            }, []);
+            return (<>
+                <div id="wrapper">
+                    <h1>toolTip</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur <a href="#">adipisicing <span  className="ttpShow">內容說明</span></a> elit. Placeat vero sit molestias, unde magni <a href="#">nulla <span className="ttpShow">內容說明</span></a>  quidem laboriosam fugit distinctio officia dolorem blanditiis a, quod similique, fugiat reiciendis. Dolorem velit vel magni, aut quod doloremque laboriosam pariatur sunt, numquam nisi necessitatibus mollitia fugiat architecto? Cupiditate blanditiis sed impedit. Eos esse inventore necessitatibus, vitae sunt fugiat, eum iure totam laborum possimus quod ullam mollitia incidunt doloribus a soluta doloremque? Doloribus accusantium quas repellat magni. Blanditiis beatae facere modi deleniti ducimus, ullam corporis reprehenderit consequatur non provident labore distinctio cumque, vero ipsam, itaque nam fugiat aut! Pariatur praesentium a voluptas, dolores minima ipsum excepturi vitae magni, ea, veniam labore itaque? Unde ipsa, excepturi totam, asperiores quia, amet fugit qui magni pariatur deserunt similique quam id veritatis reiciendis? Quis tempora dicta soluta distinctio nam labore quod consequatur suscipit quas quisquam beatae maiores alias sapiente eum fugiat impedit a repudiandae nostrum corporis quibusdam laboriosam, asperiores libero omnis. Magni, aut eius beatae aspernatur quibusdam perferendis error a quisquam reprehenderit odit distinctio illum? Molestias ex quia nam ullam, rem perspiciatis vitae enim sequi inventore consequuntur, nostrum, doloremque sed fugit ea cupiditate obcaecati debitis. Soluta quis saepe consequuntur delectus ducimus vero numquam minus, dolores placeat suscipit, totam quam nemo distinctio itaque labore assumenda. Consectetur mollitia ducimus vitae a illo, esse atque tempora quisquam incidunt perspiciatis quis voluptate blanditiis! Autem explicabo tempora ea ab adipisci sint non cum delectus ratione necessitatibus laboriosam vel eligendi odit quisquam illum iste rem, inventore, minus possimus architecto minima! Suscipit ab consequatur repellat nemo. Voluptatem nemo illo corporis magnam. Odit voluptates facilis dicta eum ea? Ea porro libero nam alias quis necessitatibus temporibus soluta officia? Aperiam saepe excepturi, odit placeat nostrum nihil tenetur rem illo asperiores. Aspernatur officia sunt dignissimos voluptatibus quidem, iusto quasi inventore, exercitationem autem veniam magni repudiandae impedit magnam accusamus obcaecati.</p>
+                    
+
+                </div>
+            </>)
+        }
+
+        ReactDOM
+            .createRoot(document.querySelector('#root'))
+            .render(<App />)
+    </script>
+</main>
+<!-- 可以使用套件給的 or官網的最新版 但只能擇一使用 -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
+<link rel="stylesheet" href="../images/trst1.jpeg">
