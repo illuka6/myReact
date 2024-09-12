@@ -33,7 +33,13 @@
                         // 建立一個縣市陣列名單
                         const arrCity=['台北市','新北市','台中市']
                         const [selCity, setSelCity]=useState('');
+
+                        // #3 複選的下拉清單 select
+                        // 建立一個縣市陣列名單
+                        const arrCity2=['台北市','新北市','台中市','高雄市','台南市']
+                        const [selCity2, setSelCity2]=useState([]);//複選,因此儲存用空陣列[]
                         //JSX寫法
+                        
                         return (
                             <div>
                                 {/* #1 input */}
@@ -54,6 +60,27 @@
                                     }
                               
                                 </select> - {selCity}
+                                <hr/>
+
+                                {/* size改變顯示選項個數 */}
+                                {/* 複合式選取 */}
+                                <select name=""id="" multiple size='6'
+                                value={selCity2} 
+                                onChange={e=>{
+                                    console.dir(e);
+                                    console.log(e.target.selectedOptions[0].value)
+                                    console.log([...e.target.selectedOptions].map((op)=>op.value));
+                                    setSelCity2([...e.target.selectedOptions].map((op)=>op.value))}}>
+
+                                    <option value="" disabled>請選擇</option>
+                                
+                                    {
+                                        arrCity2.map((city)=>{return <> 
+                                            <option value={city} key={city}>{city}</option>
+                                        </>})
+                                    }
+                              
+                                </select> - {selCity2}
                                 
                             </div>
 

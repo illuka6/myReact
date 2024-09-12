@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <script src="./javascripts/vendor.js"></script>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body class="bg-lighter">
+    <div class="container main my-5">
+        <div class="row">
+            <main class="col post">
+                <!-- 章節標題 -->
+                <div class="mb-4">
+                    <h1 class="mt-0 text-muted">Checkbox</h1>
+                </div>
+
+                <div id="root"></div>
+
+                <script type="text/babel">
+                    const { useState } = React;
+
+                    const App = () => {
+                        // #1 單一核取方塊checkbox
+                        const [check, setCheck] = useState(false);
+
+                        // #2 多個核取方塊checkbox
+                        const [checkList, setCheckList] = useState([]);
+
+                        // 建立一個函式處理是否被選取
+                        const handleCheckList = (e) => {
+                            // console.log(e.target.value); 只能保存單一勾選結果
+                            // setCheckList([...checkList, e.target.value]); 不管選取或取消選取都會加入list,且保留先前所有勾選與取消
+                            
+                            // 檢查是否被勾選
+                            // 使用if達成初步篩選
+                            // 只針對(e.target.checked)布林值為真的被勾選物件e.target.value做加入列表動作
+                            if (e.target.checked) {
+                                // 是>加入 
+                                setCheckList([...checkList, e.target.value]);
+                                // 到此為止不會重複加入，取消勾選時也不會二次加入
+                                // 但取消勾選時物件仍停留在list內沒被移除
+                            } 
+                            else {
+                                // 不是>從陣列中刪除 [非e.target.value物件]
+                                setCheckList(checkList.filter((item) => item !== e.target.value));
+                            }
+                            
+                        }
+
+
+
+                        return (<>
+                            <div>
+                                {/* #1 單一核取方塊checkbox */}
+                                <label htmlFor="isCheck">確認狀態</label>
+                                <input type="Checkbox" id="isCheck"
+                                    value={check}
+                                    onChange={(e) => {
+                                        // console.dir(e);
+                                        setCheck(e.target.checked);
+                                    }}
+                                /> {check.toString()}
+                                {/* 布林值渲染要轉成字串 */}
+                                <hr />
+
+                                {/* #2 多個核取方塊checkbox */}
+                                <label htmlFor="checkList1">冰美式</label>
+                                <input type="Checkbox" id="checkList1" value='冰美式' name="drink" onChange={handleCheckList} />
+                                <label htmlFor="checkList1">冰拿鐵</label>
+                                <input type="Checkbox" id="checkList1" value='冰拿鐵' name="drink" onChange={handleCheckList} />
+                                <label htmlFor="checkList1">冰淇淋</label>
+                                <input type="Checkbox" id="checkList1" value='冰淇淋' name="drink" onChange={handleCheckList} />
+                                <br />
+                                被選取飲料有:{checkList}
+                            </div></>
+                        )
+                    }
+
+                    ReactDOM
+                        .createRoot(document.querySelector('#root'))
+                        .render(<App />)
+                </script>
+            </main>
+        </div>
+    </div>
+
+    <link rel="stylesheet" href="./stylesheets/all.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+</body>
+
+</html>
